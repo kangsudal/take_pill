@@ -64,83 +64,149 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                    "${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}($korWeekDay)"),
-                Row(
+                  "${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}($korWeekDay)",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+
+                ///아침약
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: () {
-                        box.put('timeStampBreakfast', DateTime.now().toString(),);
+                        box.put(
+                          'timeStampBreakfast',
+                          DateTime.now().toString(),
+                        );
                       },
-                      child: Text('아침약'),
+                      child: Text('아침약(혈압약, 당뇨약)'),
                     ),
-                    Text(
-                      timeStampBreakfast,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    if (timeStampBreakfast != '')
-                      IconButton(
-                        onPressed: () {
-                          box.delete('timeStampBreakfast');
-                        },
-                        icon: Icon(
-                          Icons.remove_circle,
-                          color: Colors.blueAccent,
-                          size: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Image.asset('images/혈압약.jpg'),
                         ),
-                      ),
+                        SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Image.asset('images/당뇨아침약.jpg'),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          timeStampBreakfast,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        if (timeStampBreakfast != '')
+                          IconButton(
+                            onPressed: () {
+                              box.delete('timeStampBreakfast');
+                            },
+                            icon: Icon(
+                              Icons.remove_circle,
+                              color: Colors.blueAccent,
+                              size: 20,
+                            ),
+                          ),
+                      ],
+                    ),
                   ],
                 ),
-                Row(
+
+                ///점심약
+                // Column(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: <Widget>[
+                //     ElevatedButton(
+                //       onPressed: () {
+                //         box.put(
+                //           'timeStampLunch',
+                //           DateTime.now().toString(),
+                //         );
+                //       },
+                //       child: Text('점심약'),
+                //     ),
+                //     Row(
+                //       children: [
+                //         Text(
+                //           timeStampLunch,
+                //           style: Theme.of(context).textTheme.bodyLarge,
+                //         ),
+                //         if (timeStampLunch != '')
+                //           IconButton(
+                //             onPressed: () {
+                //               box.delete('timeStampLunch');
+                //             },
+                //             icon: Icon(
+                //               Icons.remove_circle,
+                //               color: Colors.blueAccent,
+                //               size: 20,
+                //             ),
+                //           ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
+
+                SizedBox(height: 30),
+
+                ///저녁약
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: () {
-                        box.put('timeStampLunch', DateTime.now().toString(),);
+                        box.put(
+                          'timeStampDinner',
+                          DateTime.now().toString(),
+                        );
                       },
-                      child: Text('점심약'),
+                      child: Text('저녁약(당뇨약, 서울현)'),
                     ),
-                    Text(
-                      timeStampLunch,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    if (timeStampLunch != '')
-                      IconButton(
-                        onPressed: () {
-                          box.delete('timeStampLunch');
-                        },
-                        icon: Icon(
-                          Icons.remove_circle,
-                          color: Colors.blueAccent,
-                          size: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Image.asset('images/당뇨저녁약.jpg'),
                         ),
-                      ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ElevatedButton(
-                      onPressed: () {
-                        box.put('timeStampDinner', DateTime.now().toString(),);
-                      },
-                      child: Text('저녁약'),
-                    ),
-                    Text(
-                      timeStampDinner,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    if (timeStampDinner != '')
-                      IconButton(
-                        onPressed: () {
-                          box.delete('timeStampDinner');
-                        },
-                        icon: Icon(
-                          Icons.remove_circle,
-                          color: Colors.blueAccent,
-                          size: 20,
+                        SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Image.asset('images/서울현.jpg'),
                         ),
-                      ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          timeStampDinner,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        if (timeStampDinner != '')
+                          IconButton(
+                            onPressed: () {
+                              box.delete('timeStampDinner');
+                            },
+                            icon: Icon(
+                              Icons.remove_circle,
+                              color: Colors.blueAccent,
+                              size: 20,
+                            ),
+                          ),
+                      ],
+                    ),
                   ],
                 ),
               ],
